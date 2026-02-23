@@ -1,0 +1,114 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Le Labo | illumye.me">
+	<main>
+		<section class="empty-state">
+			<div class="icon">🧪</div>
+			<h1>Le <span class="text-gradient">Labo</span></h1>
+			<p class="subtitle">
+				C'est ici que je posterai mes expérimentations, mes scripts inutiles et mes tests techniques.
+			</p>
+			
+			<div class="maintenance-box">
+				<p><strong>Statut actuel :</strong> En cours de brainstorming...</p>
+				<div class="loader-bar">
+					<div class="loader-progress"></div>
+				</div>
+				<p class="low-key">Aucune idée géniale n'a encore survécu à la phase de conception.</p>
+			</div>
+
+			<a href="/" class="back-btn">Retour au Hub</a>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	main {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 80vh;
+		text-align: center;
+		padding: 24px;
+	}
+
+	.empty-state {
+		max-width: 500px;
+	}
+
+	.icon {
+		font-size: 4rem;
+		margin-bottom: 1rem;
+	}
+
+	h1 {
+		font-size: 3.5rem;
+		margin: 0;
+		color: white;
+	}
+
+	.text-gradient {
+		background: linear-gradient(45deg, #7aa2f7, #bb9af7);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+
+	.subtitle {
+		font-size: 1.1rem;
+		color: #787c99;
+		margin-top: 1rem;
+		line-height: 1.6;
+	}
+
+	.maintenance-box {
+		margin: 3rem 0;
+		padding: 2rem;
+		background: #16161e;
+		border: 1px solid #23232e;
+		border-radius: 12px;
+	}
+
+	.loader-bar {
+		height: 4px;
+		background: #23232e;
+		border-radius: 10px;
+		margin: 20px 0;
+		overflow: hidden;
+	}
+
+	.loader-progress {
+		width: 30%; /* Pour simuler que ça avance un peu ;) */
+		height: 100%;
+		background: #7aa2f7;
+		box-shadow: 0 0 10px #7aa2f7;
+		animation: pulse 2s infinite;
+	}
+
+	@keyframes pulse {
+		0% { opacity: 0.6; }
+		50% { opacity: 1; }
+		100% { opacity: 0.6; }
+	}
+
+	.low-key {
+		font-size: 0.85rem;
+		font-style: italic;
+		color: #565f89;
+	}
+
+	.back-btn {
+		display: inline-block;
+		color: #7aa2f7;
+		text-decoration: none;
+		font-weight: 600;
+		font-size: 0.9rem;
+		border-bottom: 1px solid transparent;
+		transition: 0.2s;
+	}
+
+	.back-btn:hover {
+		border-bottom-color: #7aa2f7;
+	}
+</style>
