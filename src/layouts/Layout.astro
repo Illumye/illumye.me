@@ -1,6 +1,6 @@
 ---
 import Navbar from '../components/Navbar.astro';
-// On permet de changer le titre dynamiquement pour chaque page
+
 interface Props {
 	title: string;
 }
@@ -18,28 +18,41 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
+        <div class="noise"></div>
 		<Navbar />
 		<slot />
 	</body>
 </html>
 
 <style is:global>
-    /* Le "is:global" est la clé : il applique le style à tout le site */
-
 	:root {
-		background-color: #0d0d14;
+		background-color: #050505; /* Noir plus profond */
 	}
+    
     html,
     body {
         margin: 0;
         width: 100%;
         min-height: 100%;
-        background-color: #0d0d14; /* Enfin le fond sombre ! */
-        color: #a9b1d6;
+        background-color: #050505;
+        color: #d1d1d1;
         font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        scroll-behavior: smooth;
     }
 
-    /* On nettoie les styles par défaut des liens */
+    /* L'effet de grain photographique */
+    .noise {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none;
+        z-index: 9999;
+        opacity: 0.04;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
     a {
         text-decoration: none;
         color: inherit;
@@ -47,5 +60,16 @@ const { title } = Astro.props;
 
     * {
         box-sizing: border-box;
+    }
+
+    /* Scrollbar minimaliste */
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+        background: #050505;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #333;
     }
 </style>

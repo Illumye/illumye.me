@@ -1,208 +1,530 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
 
-const navLinks = [
+// Import des images des projets
+import ukit from "../assets/app-screenshot.jpg";
+
+// Import des assets du mini-jeu Net
+import imgCorner from "../assets/CORNER.png";
+import imgCross from "../assets/CROSS.png";
+import imgEndpoint from "../assets/ENDPOINT.png";
+import imgSegment from "../assets/SEGMENT.png";
+import imgTee from "../assets/TEE.png";
+
+const projects = [
   {
-    title: "Portfolio",
-    description: "Mes projets académiques et personnels (C, Java, OCaml, JS).",
-    url: "/portfolio",
-    icon: "📁"
+    title: "Net Puzzle Game",
+    tech: "C / SDL / Emscripten",
+    desc: "Clone du jeu 'Net' de S. Tatham. Disponible en terminal, GUI (SDL) et version web via Emscripten.",
+    link: "https://angy-seguy.emi.u-bordeaux.fr/net-a22-zt94km/",
+    label: "Jouer en ligne",
+    isInteractive: true,
+  },
+  {
+    title: "Moteur de Recherche d'Images",
+    tech: "Java / Spring Boot / Vue.js",
+    desc: "Application client-serveur de recherche d'images par similarité. Backend avec base vectorielle (PostgreSQL/pgvector), indexation par descripteurs visuels, et interface client en TypeScript/Vue.js.",
+  },
+  {
+    title: "Interpréteur Mini-ml",
+    tech: "OCaml",
+    desc: "Réalisation d'un interpréteur pour un sous-ensemble d'OCaml. Implémentation d'un parseur de syntaxe étendue et de typeurs gérant le polymorphisme faible et fort.",
   },
   {
     title: "UKit",
-    description: "Mon fork de l'application compagnon pour les étudiants de l'UB.",
-    url: "https://ukit.illumye.me",
-    icon: "🛠️",
-    external: true
+    tech: "JavaScript / TypeScript / React",
+    desc: "Application compagnon pour les étudiants de l'Université de Bordeaux. Développée et maintenue en équipe au sein du KAE-Lab.",
+    image: ukit,
+    link: "https://ukit.illumye.me",
+    label: "Voir le site",
   },
-  {
-    title: "Le Labo",
-    description: "Expérimentations, outils et trucs en cours.",
-    url: "/lab",
-    icon: "🧪"
-  }
 ];
 ---
 
-<Layout title="Hub | illumye.me">
-	<main>
-		<section class="hero">
-			<div class="status-badge">🟢 Disponible pour des projets</div>
-			<h1>Salut, moi c'est <span class="text-gradient">illumye</span></h1>
-			<p class="subtitle">
-				Étudiant en informatique passionné par le <strong>bas niveau</strong>, 
-				le <strong>jeu vidéo</strong> et le <strong>développement web</strong> moderne.
-			</p>
-			
-			<div class="social-links">
-				<a href="https://github.com/Illumye" target="_blank" class="social-btn">GitHub</a>
-				<a href="mailto:contact@illumye.me" class="social-btn">Email</a>
-			</div>
-		</section>
+<Layout title="Angy Seguy">
+  <main class="snap-container scrolly-main">
+    <section class="snap-screen hero-section">
+      <div class="hero-content">
+        <h1 class="reveal delay-1">Angy<br />Seguy.</h1>
+        <p class="subtitle reveal delay-2">
+          Développeur passionné par le <span class="text-white">bas niveau</span
+          >, l'<span class="text-white">ingénierie logicielle</span> et le <span
+            class="text-white">web moderne</span
+          >.
+        </p>
+        <div class="social-links reveal delay-3">
+          <a
+            href="https://github.com/Illumye"
+            target="_blank"
+            class="link-hover">GitHub</a
+          >
+		  <a 
+		  	href="https://github.com/KAE-Lab/" 
+			target="_blank" 
+			class="link-hover">KAE-Lab</a
+		  >
+          <a href="mailto:contact@angyseguy.com" class="link-hover">Email</a>
+        </div>
+      </div>
+      <div class="scroll-indicator reveal delay-4">
+        <span>Scroll</span>
+        <div class="line"></div>
+      </div>
+    </section>
 
-		<div class="grid-nav">
-			{navLinks.map((link) => (
-				<a href={link.url} target={link.external ? "_blank" : "_self"} class="nav-card">
-					<div class="card-icon">{link.icon}</div>
-					<div class="card-content">
-						<h2>{link.title} {link.external && <span class="external-icon">↗</span>}</h2>
-						<p>{link.description}</p>
-					</div>
-				</a>
-			))}
-		</div>
+    <section id="en-cours" class="snap-screen content-section">
+      <div class="content-wrapper">
+        <h2 class="reveal section-title">Actuellement.</h2>
+        <div class="work-statement reveal delay-1">
+          <p>
+            Je maintiens et développe <strong class="text-white">UKit</strong> au
+            sein de l'équipe <strong class="text-white">KAE-Lab</strong>. En
+            parallèle, je travaille sur un interpréteur <strong
+              class="text-white">Mini-ml (OCaml)</strong
+            > et une application full-stack de recherche d'images avec <strong
+              class="text-white">Spring Boot</strong
+            > et <strong class="text-white">Vue.js</strong>.
+          </p>
+        </div>
+      </div>
+    </section>
 
-		<section class="current-work">
-			<h3>🚀 En ce moment sur...</h3>
-			<div class="status-item">
-				<span class="emoji">⚙️</span>
-				<p>Compilateur <strong>OCaml</strong> (Analyseur & Génération)</p>
-			</div>
-			<div class="status-item">
-				<span class="emoji">🏗️</span>
-				<p>Backend <strong>Spring Boot</strong> & Frontend <strong>Vue.js</strong></p>
-			</div>
-		</section>
-	</main>
+    {
+      projects.map((p, index) => (
+        <section
+          id={index === 0 ? "projets" : `projet-${index}`}
+          class="snap-screen content-section"
+        >
+          <div class="content-wrapper">
+            {index === 0 && <h2 class="reveal section-title">Travaux.</h2>}
+
+            <article class="project-item reveal delay-1">
+              <div class="project-info">
+                <span class="tech-stack">{p.tech}</span>
+                <h3>{p.title}</h3>
+                <p>{p.desc}</p>
+                {p.link && (
+                  <a href={p.link} target="_blank" class="project-link">
+                    {p.label}
+                  </a>
+                )}
+              </div>
+
+              {/* --- MINI-JEU OU IMAGE --- */}
+              {p.isInteractive ? (
+                <div class="project-visual interactive-wrapper mario-style">
+                  <p class="game-hint">Répare les tuyaux ↓</p>
+                  <div class="net-grid">
+                    <img
+                      src={imgEndpoint.src}
+                      class="net-cell"
+                      data-rot="90"
+                      alt="pipe"
+                    />
+                    <img
+                      src={imgSegment.src}
+                      class="net-cell"
+                      data-rot="0"
+                      alt="pipe"
+                    />
+                    <img
+                      src={imgCorner.src}
+                      class="net-cell"
+                      data-rot="180"
+                      alt="pipe"
+                    />
+
+                    <img
+                      src={imgSegment.src}
+                      class="net-cell"
+                      data-rot="90"
+                      alt="pipe"
+                    />
+                    <img
+                      src={imgCross.src}
+                      class="net-cell"
+                      data-rot="0"
+                      alt="pipe"
+                    />
+                    <img
+                      src={imgTee.src}
+                      class="net-cell"
+                      data-rot="270"
+                      alt="pipe"
+                    />
+
+                    <img
+                      src={imgCorner.src}
+                      class="net-cell"
+                      data-rot="0"
+                      alt="pipe"
+                    />
+                    <img
+                      src={imgSegment.src}
+                      class="net-cell"
+                      data-rot="90"
+                      alt="pipe"
+                    />
+                    <img
+                      src={imgEndpoint.src}
+                      class="net-cell"
+                      data-rot="270"
+                      alt="pipe"
+                    />
+                  </div>
+                </div>
+              ) : (
+                p.image && (
+                  <div class="project-visual">
+                    <Image src={p.image} alt={p.title} class="img-fluid" />
+                  </div>
+                )
+              )}
+            </article>
+          </div>
+        </section>
+      ))
+    }
+  </main>
 </Layout>
 
-<style>
-	/* On force le style pour que ça ne dépende plus du template */
-	:global(body) {
-		background-color: #0d0d14 !important; /* Fond très sombre */
-		margin: 0;
-		font-family: 'Inter', sans-serif;
-	}
+<style is:global>
+  /* --- CONFIGURATION DU SCROLL SNAPPING --- */
+  html {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+  }
 
-	main {
-		max-width: 800px;
-		margin: 0 auto;
-		padding: 80px 24px;
-		color: #a9b1d6;
-	}
+  .snap-screen {
+    height: 100vh;
+    width: 100%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
 
-	.hero {
-		text-align: center;
-		margin-bottom: 4rem;
-	}
+  /* --- STYLES DE BASE --- */
+  .scrolly-main {
+    color: #d1d1d1;
+  }
 
-	.status-badge {
-		display: inline-block;
-		padding: 5px 15px;
-		background: rgba(158, 206, 106, 0.1);
-		color: #9ece6a;
-		border-radius: 20px;
-		font-size: 0.85rem;
-		font-weight: 600;
-		border: 1px solid rgba(158, 206, 106, 0.2);
-		margin-bottom: 2rem;
-	}
+  .content-wrapper,
+  .hero-content {
+    padding: 0 5vw;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+  }
 
-	h1 {
-		font-size: 4rem; /* Plus gros ! */
-		font-weight: 800;
-		color: white;
-		margin: 0;
-		line-height: 1.1;
-	}
+  /* --- ANIMATIONS SCROLLYTELLING --- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition:
+      opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+  }
 
-	.text-gradient {
-		background: linear-gradient(45deg, #7aa2f7, #bb9af7);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-	}
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-	.subtitle {
-		font-size: 1.25rem;
-		line-height: 1.6;
-		margin-top: 20px;
-		color: #787c99;
-	}
+  .delay-1 {
+    transition-delay: 0.1s;
+  }
+  .delay-2 {
+    transition-delay: 0.3s;
+  }
+  .delay-3 {
+    transition-delay: 0.5s;
+  }
+  .delay-4 {
+    transition-delay: 0.8s;
+  }
 
-	.social-links {
-		margin-top: 30px;
-		display: flex;
-		justify-content: center;
-		gap: 15px;
-	}
+  /* --- TYPOGRAPHIE GLOBALE --- */
+  .scrolly-main h1,
+  .scrolly-main h2,
+  .scrolly-main h3 {
+    color: #ffffff;
+    font-weight: 500;
+    letter-spacing: -0.04em;
+    margin: 0;
+  }
 
-	.social-btn {
-		color: white;
-		text-decoration: none;
-		padding: 10px 24px;
-		background: #1a1b26;
-		border: 1px solid #24283b;
-		border-radius: 8px;
-		font-weight: 600;
-		transition: 0.2s;
-	}
+  .text-white {
+    color: #ffffff;
+    font-weight: 500;
+  }
 
-	.social-btn:hover {
-		border-color: #7aa2f7;
-		background: #24283b;
-	}
+  /* --- HERO SECTION --- */
+  .hero-section h1 {
+    font-size: clamp(4rem, 10vw, 8rem);
+    line-height: 0.95;
+    margin-bottom: 2rem;
+  }
 
-	.grid-nav {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-		gap: 20px;
-	}
+  .hero-section .subtitle {
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+    line-height: 1.4;
+    color: #888;
+    max-width: 800px;
+  }
 
-	.nav-card {
-		background: #16161e;
-		border: 1px solid #23232e;
-		padding: 24px;
-		border-radius: 12px;
-		display: flex;
-		gap: 20px;
-		text-decoration: none;
-		color: inherit;
-		transition: 0.3s ease;
-	}
+  .social-links {
+    margin-top: 3rem;
+    display: flex;
+    gap: 2rem;
+  }
 
-	.nav-card:hover {
-		transform: translateY(-5px);
-		border-color: #7aa2f7;
-	}
+  .link-hover {
+    font-size: 1.1rem;
+    color: #fff !important;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    position: relative;
+    padding-bottom: 4px;
+    text-decoration: none;
+  }
 
-	.card-icon {
-		font-size: 2.2rem;
-	}
+  .link-hover::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: #fff;
+    transition: width 0.3s ease;
+  }
 
-	h2 {
-		margin: 0;
-		font-size: 1.3rem;
-		color: white;
-	}
+  .link-hover:hover::after {
+    width: 100%;
+  }
 
-	.card-content p {
-		margin: 8px 0 0 0;
-		font-size: 0.95rem;
-		line-height: 1.5;
-	}
+  .scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 5vw;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #666;
+  }
 
-	.current-work {
-		margin-top: 60px;
-		padding: 30px;
-		background: rgba(122, 162, 247, 0.05);
-		border-radius: 12px;
-		border: 1px solid #23232e;
-	}
+  .scroll-indicator .line {
+    width: 60px;
+    height: 1px;
+    background: #666;
+  }
 
-	.current-work h3 {
-		color: white;
-		margin-top: 0;
-		font-size: 1.1rem;
-		margin-bottom: 20px;
-	}
+  /* --- TITRES DE SECTIONS --- */
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 3rem;
+    border-bottom: 1px solid #222;
+    padding-bottom: 1rem;
+  }
 
-	.status-item {
-		display: flex;
-		align-items: center;
-		gap: 15px;
-		margin-bottom: 12px;
-	}
+  /* --- EN COURS --- */
+  .work-statement p {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    line-height: 1.3;
+    color: #888;
+    max-width: 900px;
+  }
 
-	.status-item p { margin: 0; }
+  /* --- PROJETS --- */
+  .project-item {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .project-item {
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+  }
+
+  .tech-stack {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #666;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .project-info h3 {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    margin-bottom: 1rem;
+  }
+
+  .project-info p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #888;
+    margin-bottom: 2rem;
+  }
+
+  .project-link {
+    display: inline-block;
+    padding: 12px 24px;
+    border: 1px solid #333;
+    border-radius: 30px;
+    color: #fff !important;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+
+  .project-link:hover {
+    background: #fff;
+    color: #000 !important;
+  }
+
+  .project-visual {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+  }
+
+  .img-fluid {
+    /* --- Taille pour Téléphone --- */
+    max-width: 90%; 
+    max-height: 280px; 
+    width: auto; 
+    height: auto;
+    object-fit: contain;
+    display: block;
+    filter: grayscale(20%);
+	border-radius: 5px;
+    transition: transform 0.7s ease, filter 0.7s ease;
+  }
+
+  /* --- Taille pour Ordinateur (écrans > 768px) --- */
+  @media (min-width: 768px) {
+    .img-fluid {
+      max-width: 100%; /* L'image peut prendre toute la largeur de sa colonne */
+      max-height: 550px; /* On augmente la hauteur max sans prendre tout l'écran */
+    }
+  }
+
+  .project-item:hover .img-fluid {
+    transform: scale(1.05);
+    filter: grayscale(0%);
+  }
+
+  /* --- MINI-JEU NET PUZZLE AVEC ASSETS --- */
+  .interactive-wrapper.mario-style {
+    background: linear-gradient(to bottom, #5c94fc 0%, #8ab1ff 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .interactive-wrapper.mario-style .game-hint {
+    font-family: monospace;
+    font-size: 0.85rem;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 6px 12px;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    animation: pulseText 2s infinite;
+  }
+
+  @keyframes pulseText {
+    0%,
+    100% {
+      opacity: 0.7;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+  .net-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    width: 200px;
+    height: 200px;
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.3));
+  }
+
+  .net-cell {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+    image-rendering: pixelated;
+    transition:
+      transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+      filter 0.2s;
+  }
+
+  .net-cell:hover {
+    filter: brightness(1.2);
+    z-index: 10;
+  }
 </style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // 1. Logique du Scrollytelling
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+          } else {
+            entry.target.classList.remove("active");
+          }
+        });
+      },
+      { threshold: 0.3 },
+    );
+
+    document.querySelectorAll(".reveal").forEach((el) => {
+      observer.observe(el);
+    });
+
+    // 2. Logique du Mini-Jeu Net
+    const cells = document.querySelectorAll(".net-cell");
+
+    // Initialiser la rotation de départ
+    cells.forEach((cell) => {
+      const rot = parseInt(cell.getAttribute("data-rot") || "0");
+      cell.style.transform = `rotate(${rot}deg)`;
+
+      // Ajouter l'événement de clic
+      cell.addEventListener("click", function () {
+        let currentRot = parseInt(this.getAttribute("data-rot") || "0");
+        currentRot += 90; // Tourne de 90 degrés à chaque clic
+
+        this.setAttribute("data-rot", currentRot);
+        this.style.transform = `rotate(${currentRot}deg)`;
+      });
+    });
+  });
+</script>

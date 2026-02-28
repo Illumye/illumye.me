@@ -1,34 +1,55 @@
 <nav>
     <div class="nav-content">
-        <a href="/" class="logo">illumye<span>.me</span></a>
+        <a href="#" class="logo">Angy<span class="cursor">_</span></a>
         <div class="links">
-            <a href="/">Accueil</a>
-            <a href="/portfolio">Portfolio</a>
-            <a href="/lab">Labo</a>
+            <a href="#en-cours">En cours</a>
+            <a href="#projets">Projets</a>
         </div>
     </div>
 </nav>
 
 <style>
     nav {
-        border-bottom: 1px solid #23232e;
-        background: rgba(13, 13, 20, 0.8);
-        backdrop-filter: blur(10px);
+        border-bottom: 1px solid #1f2335;
+        background: rgba(13, 13, 20, 0.85);
+        backdrop-filter: blur(12px);
         position: sticky;
         top: 0;
         z-index: 100;
     }
     .nav-content {
-        max-width: 900px;
+        max-width: 800px;
         margin: 0 auto;
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 1rem 24px;
     }
-    .logo { font-weight: 800; font-size: 1.2rem; color: white; }
-    .logo span { color: #7aa2f7; }
-    .links { display: flex; gap: 20px; }
-    .links a { font-size: 0.9rem; font-weight: 500; transition: 0.2s; }
-    .links a:hover { color: #7aa2f7; }
+    .logo { 
+        font-weight: 700; 
+        font-size: 1.2rem; 
+        color: white;
+        font-family: monospace;
+    }
+    .cursor { 
+        color: #7aa2f7; 
+        animation: blink 1s step-end infinite;
+    }
+    .links { 
+        display: flex; 
+        gap: 24px; 
+    }
+    .links a { 
+        font-size: 0.9rem; 
+        font-weight: 500; 
+        color: #8f95b2;
+        transition: color 0.2s; 
+    }
+    .links a:hover { 
+        color: #fff; 
+    }
+
+    @keyframes blink {
+        50% { opacity: 0; }
+    }
 </style>
