@@ -1,9 +1,41 @@
+---
+// On récupère l'URL actuelle pour savoir si on est sur la version anglaise ou française
+const currentPath = Astro.url.pathname;
+const isEnglish = currentPath.startsWith('/en');
+
+// On définit les textes et les liens en fonction de la langue
+const navData = isEnglish ? {
+    inProgressText: "Currently",
+    inProgressLink: "#currently",
+    projectsText: "Works",
+    projectsLink: "#works",
+    switchUrl: "/fr/",
+    switchLabel: "FR",
+    switchTitle: "Passer en Français"
+} : {
+    inProgressText: "En cours",
+    inProgressLink: "#en-cours",
+    projectsText: "Projets",
+    projectsLink: "#projets",
+    switchUrl: "/en/",
+    switchLabel: "EN",
+    switchTitle: "Switch to English"
+};
+---
+
 <nav>
     <div class="nav-content">
         <a href="#" class="logo">Angy<span class="cursor">_</span></a>
+        
         <div class="links">
-            <a href="#en-cours">En cours</a>
-            <a href="#projets">Projets</a>
+            <a href={navData.inProgressLink}>{navData.inProgressText}</a>
+            <a href={navData.projectsLink}>{navData.projectsText}</a>
+            
+            <div class="separator"></div>
+            
+            <a href={navData.switchUrl} class="lang-switch" title={navData.switchTitle}>
+                {navData.switchLabel}
+            </a>
         </div>
     </div>
 </nav>
@@ -18,12 +50,12 @@
         z-index: 100;
     }
     .nav-content {
-        max-width: 800px;
+        max-width: 1200px; /* On aligne sur la largeur des nouvelles sections (1200px) */
         margin: 0 auto;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 1rem 24px;
+        padding: 1rem 5vw;
     }
     .logo { 
         font-weight: 700; 
@@ -38,6 +70,7 @@
     .links { 
         display: flex; 
         gap: 24px; 
+        align-items: center;
     }
     .links a { 
         font-size: 0.9rem; 
@@ -47,6 +80,22 @@
     }
     .links a:hover { 
         color: #fff; 
+    }
+
+    /* Styles pour le bouton de langue */
+    .separator {
+        width: 1px;
+        height: 16px;
+        background: #3b4261;
+        margin: 0 4px;
+    }
+    .lang-switch {
+        font-weight: 700 !important;
+        color: #7aa2f7 !important;
+    }
+    .lang-switch:hover {
+        color: #fff !important;
+        text-shadow: 0 0 8px rgba(122, 162, 247, 0.5);
     }
 
     @keyframes blink {

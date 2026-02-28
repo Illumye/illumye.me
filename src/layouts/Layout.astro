@@ -3,9 +3,13 @@ import Navbar from '../components/Navbar.astro';
 
 interface Props {
 	title: string;
+	description?: string;
 }
 
-const { title } = Astro.props;
+const { 
+	title, 
+	description = "Portfolio d'Angy Seguy, développeur passionné par le bas niveau, l'ingénierie logicielle et le web moderne." 
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -15,10 +19,23 @@ const { title } = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+		
 		<title>{title}</title>
+		<meta name="description" content={description} />
+		
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={Astro.url} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={new URL('/og-image.jpg', Astro.url)} />
+
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={Astro.url} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={new URL('/og-image.jpg', Astro.url)} />
 	</head>
 	<body>
-        <div class="noise"></div>
 		<Navbar />
 		<slot />
 	</body>
@@ -26,7 +43,7 @@ const { title } = Astro.props;
 
 <style is:global>
 	:root {
-		background-color: #050505; /* Noir plus profond */
+		background-color: #0d0d14;
 	}
     
     html,
@@ -34,23 +51,9 @@ const { title } = Astro.props;
         margin: 0;
         width: 100%;
         min-height: 100%;
-        background-color: #050505;
-        color: #d1d1d1;
+        background-color: #0d0d14;
+        color: #a9b1d6;
         font-family: 'Inter', system-ui, -apple-system, sans-serif;
-        scroll-behavior: smooth;
-    }
-
-    /* L'effet de grain photographique */
-    .noise {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        pointer-events: none;
-        z-index: 9999;
-        opacity: 0.04;
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
     }
 
     a {
@@ -60,16 +63,5 @@ const { title } = Astro.props;
 
     * {
         box-sizing: border-box;
-    }
-
-    /* Scrollbar minimaliste */
-    ::-webkit-scrollbar {
-        width: 6px;
-    }
-    ::-webkit-scrollbar-track {
-        background: #050505;
-    }
-    ::-webkit-scrollbar-thumb {
-        background: #333;
     }
 </style>
