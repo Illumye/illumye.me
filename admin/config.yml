@@ -6,21 +6,24 @@ media_folder: "images"
 public_folder: "/images"
 
 collections:
-  - name: "contenu"
-    label: "Contenu de la page"
-    file: "donnees.json"
-    fields:
-      - name: profil
-        label: Profil
-        widget: object
+  - name: "pages"
+    label: "Pages du site"
+    files:
+      - label: "Mon Profil et Liens"
+        name: "contenu"
+        file: "donnees.json"
         fields:
-          - {label: "Nom", name: "nom", widget: "string"}
-          - {label: "Sous-titre", name: "sous_titre", widget: "string"}
-          - {label: "Avatar", name: "avatar", widget: "image"}
-      - name: liens
-        label: Mes Liens
-        widget: list
-        fields:
-          - {label: "Titre du bouton", name: "titre", widget: "string"}
-          - {label: "URL cible", name: "url", widget: "string"}
-          - {label: "Identifiant de l'icône (ex: github, x, statsfm)", name: "icone", widget: "string"}
+          - name: profil
+            label: Profil
+            widget: object
+            fields:
+              - {label: "Nom", name: "nom", widget: "string"}
+              - {label: "Sous-titre", name: "sous_titre", widget: "string"}
+              - {label: "Avatar", name: "avatar", widget: "image"}
+          - name: liens
+            label: Mes Liens
+            widget: list
+            fields:
+              - {label: "Titre du bouton", name: "titre", widget: "string"}
+              - {label: "URL cible", name: "url", widget: "string"}
+              - {label: "Identifiant de l'icône (ex: github, x, statsfm)", name: "icone", widget: "string"}
