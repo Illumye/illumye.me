@@ -8,5 +8,44 @@
 </head>
 <body>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  
+  <script>
+    CMS.registerPreviewStyle("https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap");
+    CMS.registerPreviewStyle("/style.css");
+
+    var ContenuPreview = createClass({
+      render: function() {
+        var entry = this.props.entry;
+        var profil = entry.getIn(['data', 'profil']);
+        var liens = entry.getIn(['data', 'liens']);
+
+        var nom = profil ? profil.get('nom') : '';
+        var sousTitre = profil ? profil.get('sous_titre') : '';
+        
+        var avatarField = profil ? profil.get('avatar') : null;
+        var avatarUrl = avatarField ? this.props.getAsset(avatarField) : '';
+
+        var liensBoutons = [];
+        if (liens) {
+          liensBoutons = liens.map(function(lien, index) {
+            return h('div', { className: 'link-btn', key: index },
+              h('span', {}, lien.get('titre'))
+            );
+          });
+        }
+
+        return h('div', { id: 'container', style: { margin: '40px auto' } },
+          h('div', { className: 'profile' },
+            avatarUrl ? h('img', { className: 'avatar', src: avatarUrl.toString() }) : null,
+            h('h1', { id: 'dyn-nom' }, nom),
+            h('p', { className: 'profile-sub' }, sousTitre)
+          ),
+          h('div', { className: 'links' }, liensBoutons)
+        );
+      }
+    });
+
+    CMS.registerPreviewTemplate("pages", ContenuPreview);
+  </script>
 </body>
 </html>
