@@ -16,9 +16,14 @@
       "icone": "x"
     },
     {
-      "titre": "Stats.fm",
+      "titre": "stats.fm",
       "url": "https://stats.fm/illumye",
       "icone": "statsfm"
+    },
+    {
+      "titre": "Swipefy",
+      "url": "https://swipefy.app/@illumye",
+      "icone": "swipefy"
     }
   ]
 }
