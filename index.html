@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>illumye.me | Liens Officiels</title>
+    
+    <meta property="og:title" content="illumye.me | Liens de Illumye" />
+    <meta property="og:description" content="Découvrez tous mes liens, réseaux et créations sur illumye.me." />
+    <meta property="og:image" content="https://illumye.me/share_preview.png" />
+    <meta property="og:url" content="https://illumye.me" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="illumye.me" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" type="image/png" href="avatar.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Sora', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #111116 0%, #0d0d12 100%), 
+                        radial-gradient(circle at 10% 10%, rgba(31, 60, 20, 0.3) 0%, transparent 40%),
+                        radial-gradient(circle at 90% 90%, rgba(20, 31, 60, 0.3) 0%, transparent 40%);
+            color: #ffffff;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+
+        #container {
+            width: 100%;
+            max-width: 440px;
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6);
+            position: relative;
+        }
+
+        .share-trigger {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.2s ease;
+        }
+
+        .share-trigger:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.05);
+        }
+
+        .share-trigger svg {
+            width: 18px;
+            height: 18px;
+            fill: #ffffff;
+        }
+
+        .profile {
+            margin-bottom: 35px;
+            margin-top: 10px;
+        }
+
+        .avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 18px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .profile h1 {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            letter-spacing: -0.5px;
+        }
+
+        .profile-sub {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 25px;
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .link-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 18px 22px;
+            background: rgba(255, 255, 255, 0.04);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 16px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s cubic-bezier(0.2, 0, 0.1, 1);
+            border: 1px solid rgba(255, 255, 255, 0.02);
+        }
+
+        .link-btn:hover {
+            background: rgba(255, 255, 255, 0.09);
+            transform: translateY(-3px);
+            border-color: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .link-btn svg.app-logo {
+            width: 24px;
+            height: 24px;
+            fill: currentColor; 
+            margin-right: 18px;
+            flex-shrink: 0;
+        }
+
+        .link-btn span {
+            flex-grow: 1;
+            text-align: left;
+        }
+
+        .link-btn .arrow-icon {
+            width: 16px;
+            height: 16px;
+            fill: rgba(255, 255, 255, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .link-btn:hover .arrow-icon {
+            fill: rgba(255, 255, 255, 0.8);
+            transform: translateX(3px);
+        }
+
+        .socials {
+            display: flex;
+            justify-content: center;
+            gap: 22px;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            padding-top: 25px;
+        }
+
+        .social-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: rgba(255, 255, 255, 0.5);
+            transition: all 0.2s ease;
+        }
+
+        .social-icon:hover svg {
+            fill: #ffffff;
+            transform: scale(1.15) translateY(-1px);
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background: #ffffff;
+            width: 100%;
+            max-width: 500px;
+            border-radius: 24px 24px 0 0;
+            padding: 30px 20px 40px;
+            transform: translateY(100%);
+            transition: transform 0.3s cubic-bezier(0.2, 0, 0.1, 1);
+            position: relative;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+        }
+
+        @media (min-width: 600px) {
+            .modal-overlay {
+                align-items: center;
+            }
+            .modal-content {
+                border-radius: 24px;
+                padding: 30px;
+                transform: scale(0.95);
+                opacity: 0;
+            }
+            .modal-overlay.active .modal-content {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .modal-header h2 {
+            color: #000000;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .close-btn {
+            position: absolute;
+            right: 0;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .close-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: #666666;
+            transition: fill 0.2s ease;
+        }
+
+        .close-btn:hover svg {
+            fill: #000000;
+        }
+
+        .preview-card {
+            background: #222222;
+            border-radius: 20px;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .preview-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .preview-card h3 {
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .preview-card p {
+            color: #aaaaaa;
+            font-size: 14px;
+        }
+
+        .share-icons {
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: nowrap;
+            gap: 20px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            scrollbar-width: none;
+        }
+
+        .share-icons::-webkit-scrollbar {
+            display: none;
+        }
+
+        .share-icon-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            min-width: 60px;
+        }
+
+        .share-icon-btn span {
+            font-size: 11px;
+            margin-top: 8px;
+            color: #666666;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .share-icon-circle {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.2s ease;
+        }
+
+        .share-icon-circle svg {
+            width: 24px;
+            height: 24px;
+            fill: #000000;
+            transition: fill 0.2s ease;
+        }
+
+        .share-icon-btn:hover .share-icon-circle {
+            transform: scale(1.05);
+        }
+
+        .share-copy .share-icon-circle { background-color: #e5e5e5; }
+        .share-x .share-icon-circle { background-color: #000000; }
+        .share-x .share-icon-circle svg { fill: #ffffff; }
+        .share-facebook .share-icon-circle { background-color: #1877f2; }
+        .share-facebook .share-icon-circle svg { fill: #ffffff; }
+        .share-whatsapp .share-icon-circle { background-color: #25d366; }
+        .share-whatsapp .share-icon-circle svg { fill: #ffffff; }
+        .share-linkedin .share-icon-circle { background-color: #0a66c2; }
+        .share-linkedin .share-icon-circle svg { fill: #ffffff; }
+        .share-messenger .share-icon-circle { background-color: #aa33ff; background: linear-gradient(45deg, #00c6ff, #0072ff); }
+        .share-messenger .share-icon-circle svg { fill: #ffffff; }
+        .share-snapchat .share-icon-circle { background-color: #fffc00; }
+
+        .footer {
+            margin-top: 45px;
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.2);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <div id="container">
+        
+        <div class="share-trigger" onclick="openModal()" title="Partager">
+            <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92zM18 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM6 13c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm12 7.02c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"></path></svg>
+        </div>
+
+        <div class="profile">
+            <img src="avatar.png" alt="Illumye" class="avatar">
+            <h1>@illumye</h1>
+            <p class="profile-sub">*/illumye</p>
+        </div>
+
+        <div class="links">
+            <a href="https://stats.fm/illumye" class="link-btn" target="_blank">
+                <svg class="app-logo" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M77.77 151.96H31.86C14.37 151.96 0.2 166.17 0.2 183.69V477.17C0.2 494.69 14.37 508.9 31.86 508.9H77.77C95.26 508.9 109.43 494.69 109.43 477.17V183.69C109.43 166.17 95.26 151.96 77.77 151.96Z"></path>
+                    <path d="M277.24 0.73h-45.91C213.84 0.73 199.67 14.93 199.67 32.46V477.17C199.67 494.69 213.84 508.9 231.33 508.9h45.91c17.49 0 31.66-14.21 31.66-31.73V32.46C308.9 14.93 294.73 0.73 277.24 0.73Z"></path>
+                    <path d="M476.7 291.04h-45.91c-17.49 0-31.66 14.21-31.66 31.73V477.17c0 17.52 14.17 31.73 31.66 31.73H476.7c17.49 0 31.66-14.21 31.66-31.73V322.76c0-17.52-14.17-31.73-31.66-31.73Z"></path>
+                </svg>
+                <span>stats.fm Profile</span>
+                <svg class="arrow-icon" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"></path></svg>
+            </a>
+
+            <a href="https://swipefy.app/@illumye" class="link-btn" target="_blank">
+                <svg class="app-logo" viewBox="0 0 660 670" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M323.59 55.58L60.33 102.17C27.01 108.07 4.77 139.94 10.65 173.35L86.15 602.35C92.03 635.77 123.81 658.07 157.13 652.18L420.39 605.58C453.71 599.69 475.95 567.82 470.07 534.41L394.57 105.4C388.69 71.99 356.91 49.68 323.59 55.58Z"></path>
+                    <path d="M614.08 189.39L354.52 125.24C321.67 117.13 288.47 137.25 280.37 170.19L176.42 593.17C168.33 626.12 188.39 659.4 221.25 667.52L480.81 731.67C513.66 739.79 546.85 719.67 554.95 686.72L658.9 263.75C667 230.8 646.93 197.51 614.08 189.39Z"></path>
+                </svg>
+                <span>Swipefy Profile</span>
+                <svg class="arrow-icon" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"></path></svg>
+            </a>
+
+            <a href="https://github.com/illumye" class="link-btn" target="_blank">
+                <svg class="app-logo" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                <span>Github</span>
+                <svg class="arrow-icon" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"></path></svg>
+            </a>
+        </div>
+
+        <div class="socials">
+            <a href="mailto:angy@kaelab.dev" class="social-icon" target="_blank" title="Email">
+                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2v.511l-8 6.223-8-6.223V6h16zM4 18V9.044l7.379 5.739a1.001 1.001 0 0 0 1.242 0L20 9.044V18H4z"></path></svg>
+            </a>
+            <a href="https://x.com/illumye" class="social-icon" target="_blank" title="X">
+                <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.25 2.25h6.763l4.717 6.233L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"></path></svg>
+            </a>
+            <a href="https://instagram.com/angy_sgy" class="social-icon" target="_blank" title="Instagram">
+                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.668-.072-4.948-.197-4.347-2.62-6.779-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"></path></svg>
+            </a>
+        </div>
+
+        <div class="footer">
+            <span>illumye.me</span>
+        </div>
+
+    </div>
+
+    <div class="modal-overlay" id="shareModal" onclick="closeModal(event)">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Share Linktree</h2>
+                <button class="close-btn" onclick="closeModal(event, true)">
+                    <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+                </button>
+            </div>
+
+            <div class="preview-card">
+                <img src="avatar.png" alt="Illumye">
+                <h3>@illumye</h3>
+                <p>*/illumye</p>
+            </div>
+
+            <div class="share-icons">
+                <a href="#" class="share-icon-btn share-copy" onclick="copyLink(event)" id="copyBtn" title="Copier le lien">
+                    <div class="share-icon-circle" id="copyIconContainer">
+                        <svg id="copySvg" viewBox="0 0 24 24"><path d="M19 8H9a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2z"></path><path d="M5 16H4V5a2 2 0 0 1 2-2h11v1h-11a1 1 0 0 0-1 1v11z"></path></svg>
+                    </div>
+                    <span id="copyText">Copy Link</span>
+                </a>
+                <a href="https://twitter.com/intent/tweet?url=https://illumye.me" class="share-icon-btn share-x" target="_blank" title="Partager sur X">
+                    <div class="share-icon-circle">
+                        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.25 2.25h6.763l4.717 6.233L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"></path></svg>
+                    </div>
+                    <span>X</span>
+                </a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://illumye.me" class="share-icon-btn share-facebook" target="_blank" title="Partager sur Facebook">
+                    <div class="share-icon-circle">
+                        <svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35C.595 0 0 .595 0 1.325v21.351C0 23.405.595 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.325-.595 1.325-1.325V1.325C24 .595 23.405 0 22.675 0z"/></svg>
+                    </div>
+                    <span>Facebook</span>
+                </a>
+                <a href="https://wa.me/?text=Découvre mes liens officiels sur https://illumye.me" class="share-icon-btn share-whatsapp" target="_blank" title="Partager sur WhatsApp">
+                    <div class="share-icon-circle">
+                        <svg viewBox="0 0 24 24"><path d="M20.447 3.452a11.91 11.91 0 0 0-8.452-3.452C5.378 0 0 5.378 0 12c0 2.112.551 4.17 1.596 5.987L0 24l6.143-1.61a11.93 11.93 0 0 0 5.857 1.61h.001c6.618 0 12-5.38 12-12 0-3.203-1.25-6.216-3.453-8.452zM12.001 22.012h-.001a10.038 10.038 0 0 1-5.116-1.383l-.367-.218-3.793.992.997-3.7-.24-.381A10.041 10.041 0 0 1 2.012 12c0-5.51 4.493-10.001 10-10.001a10.045 10.045 0 0 1 10.001 10c0 5.511-4.492 10.013-10 10.013zm5.48-7.462c-.298-.15-1.762-.871-2.036-.97-.271-.097-.47-.148-.667.148-.198.298-.767.97-.938 1.166-.171.198-.34.22-.638.071-.3-.151-1.267-.467-2.413-1.493-.89-.796-1.492-1.776-1.666-2.073-.173-.298-.018-.458.131-.606.133-.133.298-.349.447-.52.15-.171.198-.298.298-.496.1-.198.05-.373-.024-.522-.074-.15-.667-1.611-.913-2.193-.242-.563-.487-.492-.667-.5-.171-.01-.367-.01-.563-.01a1.077 1.077 0 0 0-.783.367c-.271.298-1.036 1.01-1.036 2.47 0 1.458 1.06 2.868 1.209 3.067.151.198 2.086 3.195 5.053 4.47.703.303 1.25.485 1.678.62.704.227 1.347.197 1.854.12.564-.083 1.762-.719 2.011-1.413.25-.694.25-1.288.175-1.413-.075-.125-.271-.198-.567-.348z"/></svg>
+                    </div>
+                    <span>WhatsApp</span>
+                </a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://illumye.me" class="share-icon-btn share-linkedin" target="_blank" title="Partager sur LinkedIn">
+                    <div class="share-icon-circle">
+                        <svg viewBox="0 0 24 24"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/></svg>
+                    </div>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="fb-messenger://share?link=https://illumye.me" class="share-icon-btn share-messenger" target="_blank" title="Partager sur Messenger">
+                    <div class="share-icon-circle">
+                        <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.498 1.744 6.614 4.469 8.654V24l4.088-2.242c1.104.307 2.272.475 3.483.475 6.627 0 12-4.975 12-11.111C24 4.974 18.627 0 12 0zm1.2 14.92l-2.4-2.554-4.68 2.554L10.8 9.08l2.4 2.554 4.68-2.554-4.68 5.84z"></path></svg>
+                    </div>
+                    <span>Messenger</span>
+                </a>
+                <a href="https://www.snapchat.com/share?url=https://illumye.me" class="share-icon-btn share-snapchat" target="_blank" title="Partager sur Snapchat">
+                    <div class="share-icon-circle">
+                        <svg viewBox="0 0 24 24"><path d="M21.1 16.8c-.8-.5-1.1-1.3-1.1-1.3s-1-.3-1.7-1.1l-.3-.4c-.1-.1-.1-.1-.2-.1s-.1.1-.1.2c0 0-.2.5-.2 1s.2 1.4.3 1.5l.3.3c.4.3.9.6.9 1.1 0 .7-.8 1.3-1.8 1.5-.7.1-1.4.1-2.1.2H12c-.7 0-1.4-.1-2.1-.2-1-.2-1.8-.8-1.8-1.5 0-.5.5-.8.9-1.1l.3-.3c.1-.1.3-1 .3-1.5 0-.5-.2-1-.2-1 0-.1-.1-.2-.1-.2s-.1.1-.2.1l-.3.4c-.6.8-1.7 1.1-1.7 1.1s-.3.8-1.1 1.3c-.6.3-1.1.7-1.1 1.3 0 1.2 1.6 2.3 4.2 2.7l.8.1v.2s-.2.1-.3.1l-.3.3s.1 2.2 2 2.7c1.3.4 2.4.2 3.5.2s2.2.2 3.5-.2c1.9-.5 2-2.7 2-2.7l-.3-.3s-.2-.1-.3-.1v-.2l.8-.1c2.6-.4 4.2-1.5 4.2-2.7 0-.6-.5-1.1-1.1-1.4zM12 2C8.7 2 6 4.7 6 8.1v.4c0 1 .1 1.9.4 2.8-.4.2-.6.7-.6 1.2s.2 1.1.7 1.2c.4 0 .6-.1.8-.3 0 0 1.1.1 1.7.3h.2c.7-1 1.1-2.2 1.1-3.6V8.2c0-.2-.2-.3-.3-.3s-.3.2-.3.3c0 1.4-.4 2.6-1.1 3.6-.1-.1-.2-.1-.3-.1H8c-1.1.2-1.9-.2-2.5-.9l-.1-.1s.1-1.1.1-2.1V8c0-3.3 2.7-6 6-6s6 2.7 6 6v.1c0 1.1.1 2.1.1 2.1l-.1.1c-.6.7-1.4 1.1-2.5.9h-.1c-.1 0-.2 0-.3.1-.7-1-1.1-2.2-1.1-3.6 0-.2-.2-.3-.3-.3s-.3.2-.3.3v1.9c0 1.4.4 2.6 1.1 3.6h.2c.6-.2 1.7-.3 1.7-.3.2.2.4.3.8.3.5-.1.7-.7.7-1.2s-.2-1-.6-1.2C17.9 10.4 18 9.5 18 8.5v-.4C18 4.7 15.3 2 12 2z"></path></svg>
+                    </div>
+                    <span>Snapchat</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('shareModal');
+
+        function openModal() {
+            modal.classList.add('active');
+        }
+
+        function closeModal(event, force = false) {
+            if (force || event.target === modal) {
+                modal.classList.remove('active');
+            }
+        }
+
+        function copyLink(event) {
+            event.preventDefault();
+            navigator.clipboard.writeText("https://illumye.me").then(function() {
+                const iconContainer = document.getElementById('copyIconContainer');
+                const textSpan = document.getElementById('copyText');
+                
+                const originalSvg = '<svg id="copySvg" viewBox="0 0 24 24"><path d="M19 8H9a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2z"></path><path d="M5 16H4V5a2 2 0 0 1 2-2h11v1h-11a1 1 0 0 0-1 1v11z"></path></svg>';
+                const tickSvg = '<svg viewBox="0 0 24 24" fill="#25d366"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>';
+                
+                iconContainer.innerHTML = tickSvg;
+                textSpan.innerText = "Copied!";
+                textSpan.style.color = "#25d366";
+
+                setTimeout(function() {
+                    iconContainer.innerHTML = originalSvg;
+                    textSpan.innerText = "Copy Link";
+                    textSpan.style.color = "#666666";
+                }, 2000);
+
+            }, function(err) {
+                console.error('Erreur lors de la copie : ', err);
+            });
+        }
+    </script>
+
+</body>
+</html>

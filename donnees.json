@@ -1,0 +1,19 @@
+{
+    "profil": {
+        "nom": "@illumye",
+        "sous_titre": "*/illumye",
+        "avatar": "/images/avatar.gif"
+    },
+    "liens": [
+        {
+            "titre": "GitHub",
+            "url": "https://github.com/illumye",
+            "icone": "github"
+        },
+        {
+            "titre": "X",
+            "url": "https://x.com/illumye",
+            "icone": "x"
+        }
+    ]
+}
