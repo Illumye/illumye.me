@@ -1,19 +1,24 @@
 {
-    "profil": {
-        "nom": "@illumye",
-        "sous_titre": "*/illumye",
-        "avatar": "/images/avatar.gif"
+  "profil": {
+    "nom": "illumye",
+    "sous_titre": "Illumye aka Angy",
+    "avatar": "/images/0fb8ce2995fde5de979663f794446d37-1.png"
+  },
+  "liens": [
+    {
+      "titre": "GitHub",
+      "url": "https://github.com/illumye",
+      "icone": "github"
     },
-    "liens": [
-        {
-            "titre": "GitHub",
-            "url": "https://github.com/illumye",
-            "icone": "github"
-        },
-        {
-            "titre": "X",
-            "url": "https://x.com/illumye",
-            "icone": "x"
-        }
-    ]
+    {
+      "titre": "X",
+      "url": "https://x.com/illumye",
+      "icone": "x"
+    },
+    {
+      "titre": "Stats.fm",
+      "url": "https://stats.fm/illumye",
+      "icone": "statsfm"
+    }
+  ]
 }
