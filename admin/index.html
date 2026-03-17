@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -23,21 +23,21 @@
         var sousTitre = profil ? profil.get('sous_titre') : '';
         
         var avatarField = profil ? profil.get('avatar') : null;
-        var avatarUrl = avatarField ? this.props.getAsset(avatarField) : '';
+        var avatarUrl = avatarField ? this.props.getAsset(avatarField).toString() : '';
 
         var liensBoutons = [];
         if (liens) {
           liensBoutons = liens.map(function(lien, index) {
             return h('div', { className: 'link-btn', key: index },
-              h('span', {}, lien.get('titre'))
+              h('span', {}, lien.get('titre') || 'Bouton')
             );
           });
         }
 
-        return h('div', { id: 'container', style: { margin: '40px auto' } },
+        return h('div', { id: 'container', style: { margin: '40px auto', position: 'relative' } },
           h('div', { className: 'profile' },
-            avatarUrl ? h('img', { className: 'avatar', src: avatarUrl.toString() }) : null,
-            h('h1', { id: 'dyn-nom' }, nom),
+            avatarUrl ? h('img', { className: 'avatar', src: avatarUrl }) : null,
+            h('h1', {}, nom),
             h('p', { className: 'profile-sub' }, sousTitre)
           ),
           h('div', { className: 'links' }, liensBoutons)
@@ -45,7 +45,7 @@
       }
     });
 
-    CMS.registerPreviewTemplate("pages", ContenuPreview);
+    CMS.registerPreviewTemplate("contenu", ContenuPreview);
   </script>
 </body>
 </html>
